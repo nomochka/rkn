@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "РКН Проверка (IP + Домены)",
+  "version": "3.0",
+  "description": "Проверяет сайты по IP и доменам из реестра РКН",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://raw.githubusercontent.com/*",
+    "https://dns.google/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "РКН Проверка"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
